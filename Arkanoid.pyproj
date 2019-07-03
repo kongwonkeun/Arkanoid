@@ -1,0 +1,337 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>2bee3497-86c4-4dfc-80e6-37d2915c4e3f</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>Arkanoid.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>Arkanoid</Name>
+    <RootNamespace>Arkanoid</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Arkanoid.py" />
+    <Compile Include="arkanoid\event.py" />
+    <Compile Include="arkanoid\game.py" />
+    <Compile Include="arkanoid\rounds\base.py" />
+    <Compile Include="arkanoid\rounds\round1.py" />
+    <Compile Include="arkanoid\rounds\round2.py" />
+    <Compile Include="arkanoid\rounds\round3.py" />
+    <Compile Include="arkanoid\rounds\round4.py" />
+    <Compile Include="arkanoid\rounds\round5.py" />
+    <Compile Include="arkanoid\rounds\__init__.py" />
+    <Compile Include="arkanoid\sprites\ball.py" />
+    <Compile Include="arkanoid\sprites\brick.py" />
+    <Compile Include="arkanoid\sprites\edge.py" />
+    <Compile Include="arkanoid\sprites\enemy.py" />
+    <Compile Include="arkanoid\sprites\paddle.py" />
+    <Compile Include="arkanoid\sprites\powerup.py" />
+    <Compile Include="arkanoid\sprites\__init__.py" />
+    <Compile Include="arkanoid\utils\ptext.py" />
+    <Compile Include="arkanoid\utils\util.py" />
+    <Compile Include="arkanoid\utils\__init__.py" />
+    <Compile Include="arkanoid\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="arkanoid\" />
+    <Folder Include="arkanoid\data\" />
+    <Folder Include="arkanoid\data\fonts\" />
+    <Folder Include="arkanoid\data\graphics\" />
+    <Folder Include="arkanoid\rounds\" />
+    <Folder Include="arkanoid\sprites\" />
+    <Folder Include="arkanoid\utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="arkanoid\data\fonts\emulogic.ttf" />
+    <Content Include="arkanoid\data\fonts\generation.ttf" />
+    <Content Include="arkanoid\data\fonts\optimus.otf" />
+    <Content Include="arkanoid\data\graphics\ball.png" />
+    <Content Include="arkanoid\data\graphics\brick_blue.png" />
+    <Content Include="arkanoid\data\graphics\brick_cyan.png" />
+    <Content Include="arkanoid\data\graphics\brick_gold.png" />
+    <Content Include="arkanoid\data\graphics\brick_green.png" />
+    <Content Include="arkanoid\data\graphics\brick_orange.png" />
+    <Content Include="arkanoid\data\graphics\brick_pink.png" />
+    <Content Include="arkanoid\data\graphics\brick_red.png" />
+    <Content Include="arkanoid\data\graphics\brick_silver.png" />
+    <Content Include="arkanoid\data\graphics\brick_silver_1.png" />
+    <Content Include="arkanoid\data\graphics\brick_silver_10.png" />
+    <Content Include="arkanoid\data\graphics\brick_silver_2.png" />
+    <Content Include="arkanoid\data\graphics\brick_silver_3.png" />
+    <Content Include="arkanoid\data\graphics\brick_silver_4.png" />
+    <Content Include="arkanoid\data\graphics\brick_silver_5.png" />
+    <Content Include="arkanoid\data\graphics\brick_silver_6.png" />
+    <Content Include="arkanoid\data\graphics\brick_silver_7.png" />
+    <Content Include="arkanoid\data\graphics\brick_silver_8.png" />
+    <Content Include="arkanoid\data\graphics\brick_silver_9.png" />
+    <Content Include="arkanoid\data\graphics\brick_white.png" />
+    <Content Include="arkanoid\data\graphics\brick_yellow.png" />
+    <Content Include="arkanoid\data\graphics\door_top_left_1.png" />
+    <Content Include="arkanoid\data\graphics\door_top_left_2.png" />
+    <Content Include="arkanoid\data\graphics\door_top_left_3.png" />
+    <Content Include="arkanoid\data\graphics\door_top_left_4.png" />
+    <Content Include="arkanoid\data\graphics\door_top_left_5.png" />
+    <Content Include="arkanoid\data\graphics\door_top_left_6.png" />
+    <Content Include="arkanoid\data\graphics\door_top_left_7.png" />
+    <Content Include="arkanoid\data\graphics\door_top_right_1.png" />
+    <Content Include="arkanoid\data\graphics\door_top_right_2.png" />
+    <Content Include="arkanoid\data\graphics\door_top_right_3.png" />
+    <Content Include="arkanoid\data\graphics\door_top_right_4.png" />
+    <Content Include="arkanoid\data\graphics\door_top_right_5.png" />
+    <Content Include="arkanoid\data\graphics\door_top_right_6.png" />
+    <Content Include="arkanoid\data\graphics\door_top_right_7.png" />
+    <Content Include="arkanoid\data\graphics\edge_left.png" />
+    <Content Include="arkanoid\data\graphics\edge_right.png" />
+    <Content Include="arkanoid\data\graphics\edge_top.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_1.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_10.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_11.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_12.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_13.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_14.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_15.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_16.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_17.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_18.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_19.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_2.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_20.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_21.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_22.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_23.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_24.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_25.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_3.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_4.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_5.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_6.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_7.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_8.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cone_9.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_1.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_10.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_11.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_12.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_13.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_14.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_15.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_16.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_17.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_18.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_19.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_2.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_20.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_21.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_22.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_23.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_24.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_25.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_3.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_4.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_5.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_6.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_7.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_8.png" />
+    <Content Include="arkanoid\data\graphics\enemy_cube_9.png" />
+    <Content Include="arkanoid\data\graphics\enemy_explosion_1.png" />
+    <Content Include="arkanoid\data\graphics\enemy_explosion_10.png" />
+    <Content Include="arkanoid\data\graphics\enemy_explosion_2.png" />
+    <Content Include="arkanoid\data\graphics\enemy_explosion_3.png" />
+    <Content Include="arkanoid\data\graphics\enemy_explosion_4.png" />
+    <Content Include="arkanoid\data\graphics\enemy_explosion_5.png" />
+    <Content Include="arkanoid\data\graphics\enemy_explosion_6.png" />
+    <Content Include="arkanoid\data\graphics\enemy_explosion_7.png" />
+    <Content Include="arkanoid\data\graphics\enemy_explosion_8.png" />
+    <Content Include="arkanoid\data\graphics\enemy_explosion_9.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_1.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_10.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_11.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_12.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_13.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_14.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_15.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_16.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_17.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_18.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_19.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_2.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_20.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_21.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_22.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_23.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_24.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_25.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_3.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_4.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_5.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_6.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_7.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_8.png" />
+    <Content Include="arkanoid\data\graphics\enemy_molecule_9.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_1.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_10.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_11.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_12.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_13.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_14.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_15.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_16.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_17.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_18.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_19.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_2.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_20.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_21.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_22.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_23.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_24.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_25.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_3.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_4.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_5.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_6.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_7.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_8.png" />
+    <Content Include="arkanoid\data\graphics\enemy_pyramid_9.png" />
+    <Content Include="arkanoid\data\graphics\laser_bullet.png" />
+    <Content Include="arkanoid\data\graphics\logo.png" />
+    <Content Include="arkanoid\data\graphics\paddle.png" />
+    <Content Include="arkanoid\data\graphics\paddle_explode_1.png" />
+    <Content Include="arkanoid\data\graphics\paddle_explode_2.png" />
+    <Content Include="arkanoid\data\graphics\paddle_explode_3.png" />
+    <Content Include="arkanoid\data\graphics\paddle_explode_4.png" />
+    <Content Include="arkanoid\data\graphics\paddle_explode_5.png" />
+    <Content Include="arkanoid\data\graphics\paddle_explode_6.png" />
+    <Content Include="arkanoid\data\graphics\paddle_explode_7.png" />
+    <Content Include="arkanoid\data\graphics\paddle_explode_8.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_1.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_10.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_11.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_12.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_13.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_14.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_15.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_16.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_2.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_3.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_4.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_5.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_6.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_7.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_8.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_9.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_pulsate_1.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_pulsate_2.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_pulsate_3.png" />
+    <Content Include="arkanoid\data\graphics\paddle_laser_pulsate_4.png" />
+    <Content Include="arkanoid\data\graphics\paddle_life.png" />
+    <Content Include="arkanoid\data\graphics\paddle_materialize_1.png" />
+    <Content Include="arkanoid\data\graphics\paddle_materialize_10.png" />
+    <Content Include="arkanoid\data\graphics\paddle_materialize_11.png" />
+    <Content Include="arkanoid\data\graphics\paddle_materialize_12.png" />
+    <Content Include="arkanoid\data\graphics\paddle_materialize_13.png" />
+    <Content Include="arkanoid\data\graphics\paddle_materialize_14.png" />
+    <Content Include="arkanoid\data\graphics\paddle_materialize_15.png" />
+    <Content Include="arkanoid\data\graphics\paddle_materialize_2.png" />
+    <Content Include="arkanoid\data\graphics\paddle_materialize_3.png" />
+    <Content Include="arkanoid\data\graphics\paddle_materialize_4.png" />
+    <Content Include="arkanoid\data\graphics\paddle_materialize_5.png" />
+    <Content Include="arkanoid\data\graphics\paddle_materialize_6.png" />
+    <Content Include="arkanoid\data\graphics\paddle_materialize_7.png" />
+    <Content Include="arkanoid\data\graphics\paddle_materialize_8.png" />
+    <Content Include="arkanoid\data\graphics\paddle_materialize_9.png" />
+    <Content Include="arkanoid\data\graphics\paddle_pulsate_1.png" />
+    <Content Include="arkanoid\data\graphics\paddle_pulsate_2.png" />
+    <Content Include="arkanoid\data\graphics\paddle_pulsate_3.png" />
+    <Content Include="arkanoid\data\graphics\paddle_pulsate_4.png" />
+    <Content Include="arkanoid\data\graphics\paddle_wide_1.png" />
+    <Content Include="arkanoid\data\graphics\paddle_wide_2.png" />
+    <Content Include="arkanoid\data\graphics\paddle_wide_3.png" />
+    <Content Include="arkanoid\data\graphics\paddle_wide_4.png" />
+    <Content Include="arkanoid\data\graphics\paddle_wide_5.png" />
+    <Content Include="arkanoid\data\graphics\paddle_wide_6.png" />
+    <Content Include="arkanoid\data\graphics\paddle_wide_7.png" />
+    <Content Include="arkanoid\data\graphics\paddle_wide_8.png" />
+    <Content Include="arkanoid\data\graphics\paddle_wide_9.png" />
+    <Content Include="arkanoid\data\graphics\paddle_wide_pulsate_1.png" />
+    <Content Include="arkanoid\data\graphics\paddle_wide_pulsate_2.png" />
+    <Content Include="arkanoid\data\graphics\paddle_wide_pulsate_3.png" />
+    <Content Include="arkanoid\data\graphics\paddle_wide_pulsate_4.png" />
+    <Content Include="arkanoid\data\graphics\powerup_catch_1.png" />
+    <Content Include="arkanoid\data\graphics\powerup_catch_2.png" />
+    <Content Include="arkanoid\data\graphics\powerup_catch_3.png" />
+    <Content Include="arkanoid\data\graphics\powerup_catch_4.png" />
+    <Content Include="arkanoid\data\graphics\powerup_catch_5.png" />
+    <Content Include="arkanoid\data\graphics\powerup_catch_6.png" />
+    <Content Include="arkanoid\data\graphics\powerup_catch_7.png" />
+    <Content Include="arkanoid\data\graphics\powerup_catch_8.png" />
+    <Content Include="arkanoid\data\graphics\powerup_duplicate_1.png" />
+    <Content Include="arkanoid\data\graphics\powerup_duplicate_2.png" />
+    <Content Include="arkanoid\data\graphics\powerup_duplicate_3.png" />
+    <Content Include="arkanoid\data\graphics\powerup_duplicate_4.png" />
+    <Content Include="arkanoid\data\graphics\powerup_duplicate_5.png" />
+    <Content Include="arkanoid\data\graphics\powerup_duplicate_6.png" />
+    <Content Include="arkanoid\data\graphics\powerup_duplicate_7.png" />
+    <Content Include="arkanoid\data\graphics\powerup_duplicate_8.png" />
+    <Content Include="arkanoid\data\graphics\powerup_expand_1.png" />
+    <Content Include="arkanoid\data\graphics\powerup_expand_2.png" />
+    <Content Include="arkanoid\data\graphics\powerup_expand_3.png" />
+    <Content Include="arkanoid\data\graphics\powerup_expand_4.png" />
+    <Content Include="arkanoid\data\graphics\powerup_expand_5.png" />
+    <Content Include="arkanoid\data\graphics\powerup_expand_6.png" />
+    <Content Include="arkanoid\data\graphics\powerup_expand_7.png" />
+    <Content Include="arkanoid\data\graphics\powerup_expand_8.png" />
+    <Content Include="arkanoid\data\graphics\powerup_laser_1.png" />
+    <Content Include="arkanoid\data\graphics\powerup_laser_2.png" />
+    <Content Include="arkanoid\data\graphics\powerup_laser_3.png" />
+    <Content Include="arkanoid\data\graphics\powerup_laser_4.png" />
+    <Content Include="arkanoid\data\graphics\powerup_laser_5.png" />
+    <Content Include="arkanoid\data\graphics\powerup_laser_6.png" />
+    <Content Include="arkanoid\data\graphics\powerup_laser_7.png" />
+    <Content Include="arkanoid\data\graphics\powerup_laser_8.png" />
+    <Content Include="arkanoid\data\graphics\powerup_life_1.png" />
+    <Content Include="arkanoid\data\graphics\powerup_life_2.png" />
+    <Content Include="arkanoid\data\graphics\powerup_life_3.png" />
+    <Content Include="arkanoid\data\graphics\powerup_life_4.png" />
+    <Content Include="arkanoid\data\graphics\powerup_life_5.png" />
+    <Content Include="arkanoid\data\graphics\powerup_life_6.png" />
+    <Content Include="arkanoid\data\graphics\powerup_life_7.png" />
+    <Content Include="arkanoid\data\graphics\powerup_life_8.png" />
+    <Content Include="arkanoid\data\graphics\powerup_slow_1.png" />
+    <Content Include="arkanoid\data\graphics\powerup_slow_2.png" />
+    <Content Include="arkanoid\data\graphics\powerup_slow_3.png" />
+    <Content Include="arkanoid\data\graphics\powerup_slow_4.png" />
+    <Content Include="arkanoid\data\graphics\powerup_slow_5.png" />
+    <Content Include="arkanoid\data\graphics\powerup_slow_6.png" />
+    <Content Include="arkanoid\data\graphics\powerup_slow_7.png" />
+    <Content Include="arkanoid\data\graphics\powerup_slow_8.png" />
+    <Content Include="arkanoid\data\graphics\powerup_warp_1.png" />
+    <Content Include="arkanoid\data\graphics\powerup_warp_2.png" />
+    <Content Include="arkanoid\data\graphics\powerup_warp_3.png" />
+    <Content Include="arkanoid\data\graphics\powerup_warp_4.png" />
+    <Content Include="arkanoid\data\graphics\powerup_warp_5.png" />
+    <Content Include="arkanoid\data\graphics\powerup_warp_6.png" />
+    <Content Include="arkanoid\data\graphics\powerup_warp_7.png" />
+    <Content Include="arkanoid\data\graphics\powerup_warp_8.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
