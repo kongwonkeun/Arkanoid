@@ -17,7 +17,8 @@ class Paddle(pygame.sprite.Sprite):
     The movable paddle (a.k.a the "Vaus") used to control the ball to
     prevent it from dropping off the bottom of the screen.
     """
-    def __init__(self, left_offset=0, right_offset=0, bottom_offset=0, speed=10):
+    ##def __init__(self, left_offset=0, right_offset=0, bottom_offset=0, speed=10):
+    def __init__(self, left_offset=0, right_offset=0, bottom_offset=0, speed=10, game=None):
         """
         Create a new Paddle instance.
         The paddle will travel the entire width of the screen, unless the
@@ -35,6 +36,10 @@ class Paddle(pygame.sprite.Sprite):
             speed: Optional speed of the paddle in pixels per frame.
         """
         super().__init__()
+
+        #---- kong ----
+        self.game = game
+        #----
 
         # The speed of the paddle movement in pixels per frame.
         self.speed = speed
@@ -265,8 +270,9 @@ class NormalState(PaddleState):
         super().__init__(paddle)
         self._pulsator = _PaddlePulsator(paddle, 'paddle_pulsate')
         #---- kong ----
-        #self._game = game
-        #self._bullets = []
+        self._game = paddle.game
+        self._bullets = []
+        self._flag = True
         #----
 
     def enter(self):
@@ -276,29 +282,31 @@ class NormalState(PaddleState):
         pos = self.paddle.rect.center
         self.paddle.image, self.paddle.rect = load_png('paddle')
         self.paddle.rect.center = pos
-        #---- kong ----
-        #receiver.register_handler(pygame.KEYUP, self._fire)
-        #----
 
     def update(self):
         """
         Pulsate the paddle lights.
         """
         self._pulsator.update()
+        #---- kong ----
+        if self._flag:
+            self._flag = False
+            receiver.register_handler(pygame.KEYUP, self._fire)
+        #----
 
     #---- kong ----
     #def exit(self, on_exit):
     #    receiver.unregister_handler(self._fire)
     #
-    #def _fire(self, event):
-    #    if event.key == pygame.K_SPACE:
-    #        self._bullets = [bullet for bullet in self._bullets if bullet.visible]
-    #        if len(self._bullets) < 2:
-    #            left, top = self.paddle.rect.bottomleft
-    #            bullet = LaserBullet(self._game, position=(left + (self.paddle.rect.width /2), top))
-    #            self._bullets.append(bullet)
-    #            self._game.sprites.append(bullet)
-    #            bullet.release()
+    def _fire(self, event):
+        if event.key == pygame.K_SPACE:
+            self._bullets = [bullet for bullet in self._bullets if bullet.visible]
+            if len(self._bullets) < 3:
+                left, top = self.paddle.rect.bottomleft
+                bullet = LaserBullet(self._game, position=(left + (self.paddle.rect.width /2), top))
+                self._bullets.append(bullet)
+                self._game.sprites.append(bullet)
+                bullet.release()
     #----
 
 class _PaddlePulsator:
@@ -538,7 +546,8 @@ class LaserBullet(pygame.sprite.Sprite):
     """
     A bullet fired from the laser paddle.
     """
-    def __init__(self, game, position, speed=15):
+    #def __init__(self, game, position, speed=15):
+    def __init__(self, game, position, speed=5):
         """
         Initialise the laser bullets.
         Args:

@@ -65,10 +65,12 @@ class Brick(pygame.sprite.Sprite):
 
         # The number of collisions before the brick gets destroyed.
         if brick_colour == BrickColour.silver:
-            self._destroy_after = 2
+            #self._destroy_after = 2
+            self._destroy_after = 3
         elif brick_colour == BrickColour.gold:
             # Gold bricks are never destroyed.
-            self._destroy_after = -1
+            #self._destroy_after = -1
+            self._destroy_after = 5
         else:
             self._destroy_after = 1
 
@@ -105,7 +107,8 @@ class BrickColour(enum.Enum):
     blue = 100
     cyan = 70
     # Gold bricks have no score because they are indestructable.
-    gold = 0
+    #gold = 0
+    gold = 200
     green = 80
     orange = 60
     pink = 110
@@ -117,4 +120,4 @@ class BrickColour(enum.Enum):
 
 #
 #
-#
+# 

@@ -384,11 +384,18 @@ class Game:
         self.round = round_class(TOP_OFFSET)
 
         # The sprites in the game.
+        #self.paddle = Paddle(
+        #    left_offset=self.round.edges.left.rect.width,
+        #    right_offset=self.round.edges.right.rect.width,
+        #    bottom_offset=60,
+        #    speed=PADDLE_SPEED
+        #)
         self.paddle = Paddle(
             left_offset=self.round.edges.left.rect.width,
             right_offset=self.round.edges.right.rect.width,
             bottom_offset=60,
-            speed=PADDLE_SPEED
+            speed=PADDLE_SPEED,
+            game=self
         )
 
         ball = Ball(
@@ -979,6 +986,9 @@ class GameEndState(BaseState):
 
         # Unregister the event handlers.
         receiver.unregister_handler(self.game.handler_move_left, self.game.handler_move_right, self.game.handler_stop)
+        #---- kong ----
+        receiver.unregister_handler(self.game.handler_quit)
+        #----
 
     def update(self):
         pass
