@@ -8,7 +8,7 @@ from arkanoid.rounds.base import (BaseRound, BLUE)
 from arkanoid.rounds.round4 import Round4
 from arkanoid.sprites.brick import (Brick, BrickColour)
 from arkanoid.sprites.enemy import EnemyType
-from arkanoid.sprites.powerup import (CatchPowerUp, DuplicatePowerUp, ExtraLifePowerUp)
+from arkanoid.sprites.powerup import (CatchPowerUp, DuplicatePowerUp, ExtraLifePowerUp, LaserPowerUp)
 
 class Round3(BaseRound):
 
@@ -48,12 +48,14 @@ class Round3(BaseRound):
         rows += [BrickColour.blue] * 3   # row 6
         rows += [BrickColour.gold] * 10
         rows += [BrickColour.cyan] * 2   # row 7
-        rows += [(BrickColour.cyan,  CatchPowerUp)]
+        #rows += [(BrickColour.cyan,  CatchPowerUp)]
+        rows += [(BrickColour.cyan,  LaserPowerUp)]
         rows += [BrickColour.cyan] * 3
         rows += [(BrickColour.cyan,  ExtraLifePowerUp)]
         rows += [BrickColour.cyan] * 6
         rows += [BrickColour.gold] * 10  # row 8
-        rows += [(BrickColour.cyan,  CatchPowerUp)]
+        #rows += [(BrickColour.cyan,  CatchPowerUp)]
+        rows += [(BrickColour.cyan,  LaserPowerUp)]
         rows += [BrickColour.cyan] * 2
 
         bricks = []
@@ -67,7 +69,7 @@ class Round3(BaseRound):
                 colour, powerup = row
             except TypeError:
                 colour, powerup = row, None
-            brick = Brick(colour, 3, powerup_cls=powerup)
+            brick = Brick(colour, 3, powerup_cls = powerup)
             bricks.append(self._blit_brick(brick, x, y))
             x += 1
         return pygame.sprite.Group(*bricks)

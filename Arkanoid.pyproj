@@ -31,6 +31,9 @@
     <Compile Include="arkanoid\rounds\round4.py" />
     <Compile Include="arkanoid\rounds\round5.py" />
     <Compile Include="arkanoid\rounds\__init__.py" />
+    <Compile Include="arkanoid\sensor.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="arkanoid\sprites\ball.py" />
     <Compile Include="arkanoid\sprites\brick.py" />
     <Compile Include="arkanoid\sprites\edge.py" />

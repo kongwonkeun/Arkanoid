@@ -7,7 +7,8 @@ import math
 import pygame
 
 from arkanoid.event import receiver
-from arkanoid.utils.util import (load_png, load_png_sequence)
+from arkanoid.utils.util import (load_png, load_png_sequence, load_png_x, load_png_sequence_x) #---- kong ----
+from arkanoid.sensor import direction #---- kong ----
 
 class Paddle(pygame.sprite.Sprite):
 
@@ -20,7 +21,7 @@ class Paddle(pygame.sprite.Sprite):
         self.speed = speed
         self._move = 0
         self.visible = True
-        self.image, self.rect = load_png('paddle')
+        self.image, self.rect = load_png_x('paddle') #---- kong ----
         screen = pygame.display.get_surface().get_rect()
         self.area = pygame.Rect(
             screen.left + left_offset,
@@ -33,6 +34,12 @@ class Paddle(pygame.sprite.Sprite):
         self._state = NormalState(self)
 
     def update(self):
+        #---- kong ----
+        if  direction != 2:
+            if   direction == -1: self._move = -self.speed # left
+            elif direction == 1:  self._move =  self.speed # right
+            elif direction == 0:  self._move = 0
+        #----
         self._state.update()
         if  self._move:
             newpos = self.rect.move(self._move, 0)
@@ -131,7 +138,7 @@ class NormalState(PaddleState):
 
     def enter(self):
         pos = self.paddle.rect.center
-        self.paddle.image, self.paddle.rect = load_png('paddle')
+        self.paddle.image, self.paddle.rect = load_png_x('paddle') #---- kong ----
         self.paddle.rect.center = pos
 
     def update(self):
@@ -158,7 +165,7 @@ class _PaddlePulsator:
 
     def __init__(self, paddle, image_sequence_name):
         self._paddle = paddle
-        self._image_sequence = load_png_sequence(image_sequence_name)
+        self._image_sequence = load_png_sequence_x(image_sequence_name) #---- kong ----
         self._animation = None
         self._update_count = 0
 
@@ -178,7 +185,7 @@ class MaterializeState(PaddleState):
 
     def __init__(self, paddle):
         super().__init__(paddle)
-        self._animation = iter(load_png_sequence('paddle_materialize'))
+        self._animation = iter(load_png_sequence_x('paddle_materialize')) #---- kong ----
         self._update_count = 0
 
     def update(self):
@@ -195,7 +202,7 @@ class WideState(PaddleState):
 
     def __init__(self, paddle):
         super().__init__(paddle)
-        self._image_sequence = load_png_sequence('paddle_wide')
+        self._image_sequence = load_png_sequence_x('paddle_wide') #---- kong ----
         self._animation = iter(self._image_sequence)
         self._pulsator = _PaddlePulsator(paddle, 'paddle_wide_pulsate')
         self._expand, self._shrink = True, False
@@ -241,12 +248,15 @@ class LaserState(PaddleState):
     def __init__(self, paddle, game):
         super().__init__(paddle)
         self._game = game
-        self._image_sequence = load_png_sequence('paddle_laser')
+        self._image_sequence = load_png_sequence_x('paddle_laser') #---- kong ----
         self._laser_anim = iter(self._image_sequence)
         self._to_laser, self._from_laser = True, False
         self._pulsator = _PaddlePulsator(paddle, 'paddle_laser_pulsate')
         self._bullets = []
         self._on_exit = None
+        #---- kong ----
+        self._fire_count = 0
+        #----
 
     def update(self):
         if  not self._to_laser and not self._from_laser:
@@ -255,6 +265,9 @@ class LaserState(PaddleState):
             self._convert_to_laser()
         elif self._from_laser:
             self._convert_from_laser()
+        self._fire_count += 1
+        if  self._fire_count % 20 == 0:
+            self._fire_x()
 
     def _convert_to_laser(self):
         try:
@@ -286,13 +299,33 @@ class LaserState(PaddleState):
         self._laser_anim = iter(reversed(self._image_sequence))
         receiver.unregister_handler(self._fire)
 
+    #---- kong ----
+
+    def _fire_x(self):
+        self._bullets = [bullet for bullet in self._bullets if bullet.visible]
+        if  len(self._bullets) < 3:
+            left, top = self.paddle.rect.bottomleft
+            bullet1 = LaserBullet(self._game, position = (left + 15, top))
+            bullet2 = LaserBullet(self._game, position = (left + self.paddle.rect.width - 15, top))
+            bullet3 = LaserBullet(self._game, position = (left + self.paddle.rect.width / 2,  top))
+            self._bullets.append(bullet1)
+            self._bullets.append(bullet2)
+            self._bullets.append(bullet3)
+            self._game.sprites.append(bullet1)
+            self._game.sprites.append(bullet2)
+            self._game.sprites.append(bullet3)
+            bullet1.release()
+            bullet2.release()
+            bullet3.release()
+    #----
+
     def _fire(self, event):
         if  event.key == pygame.K_SPACE:
             self._bullets = [bullet for bullet in self._bullets if bullet.visible]
             if  len(self._bullets) < 3:
                 left, top = self.paddle.rect.bottomleft
-                bullet1 = LaserBullet(self._game, position=(left + 10, top))
-                bullet2 = LaserBullet(self._game, position=(left + self.paddle.rect.width - 10, top))
+                bullet1 = LaserBullet(self._game, position = (left + 10, top))
+                bullet2 = LaserBullet(self._game, position = (left + self.paddle.rect.width - 10, top))
                 self._bullets.append(bullet1)
                 self._bullets.append(bullet2)
                 self._game.sprites.append(bullet1)
@@ -344,7 +377,7 @@ class ExplodingState(PaddleState):
 
     def __init__(self, paddle, on_exploded):
         super().__init__(paddle)
-        self._exploding_animation = iter(load_png_sequence('paddle_explode'))
+        self._exploding_animation = iter(load_png_sequence_x('paddle_explode')) #---- kong ----
         self._on_explode_complete = on_exploded
         self._rect_orig = None
         self._update_count = 0

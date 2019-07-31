@@ -29,11 +29,11 @@ class Round1(BaseRound):
     def _create_bricks(self):
         colours = (BrickColour.silver, BrickColour.red, BrickColour.yellow, BrickColour.blue, BrickColour.green)
         powerup_classes = []
-        powerup_classes.extend([CatchPowerUp] * 3)
+        #powerup_classes.extend([CatchPowerUp] * 3)
         powerup_classes.extend([ExpandPowerUp] * 4)
         powerup_classes.extend([ExtraLifePowerUp] * 3)
         powerup_classes.extend([SlowBallPowerUp] * 2)
-        powerup_classes.extend([LaserPowerUp] * 4)
+        powerup_classes.extend([LaserPowerUp] * 7) # 4 --> 7
         random.shuffle(powerup_classes)
 
         powerup_indexes = random.sample(range(52), len(powerup_classes) - 4)

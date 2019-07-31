@@ -5,8 +5,42 @@
 import functools
 import os
 import pygame
+import random
+
+from arkanoid.sensor import speed
 
 HIGH_SCORE_FILE = os.path.join(os.path.expanduser('~'), '.arkanoid')
+
+#---- kong ----
+def load_png_x(filename):
+    if  not filename.lower().endswith('.png'):
+        filename = '{}.png'.format(filename)
+    fullpath = os.path.join(os.path.dirname(__file__), '..', 'data', 'graphics', filename)
+    if  not os.path.exists(fullpath):
+        raise FileNotFoundError('file not found: {}'.format(fullpath))
+    image = pygame.image.load(fullpath)
+    if  image.get_alpha is None:
+        image = image.convert()
+    else:
+        image = image.convert_alpha()
+    r = image.get_rect()
+    i = pygame.transform.scale(image, (r.width + 100 + (speed // 10), r.height))
+    return i, i.get_rect()
+#----
+
+#---- kong ----
+def load_png_sequence_x(filename_prefix):
+    count, sequence = 1, []
+    while True:
+        filename = '%s_%s.png' % (filename_prefix, count)
+        try:
+            sequence.append(load_png_x(filename))
+        except FileNotFoundError:
+            break
+        else:
+            count += 1
+    return sequence
+#----
 
 def load_png(filename):
     if  not filename.lower().endswith('.png'):

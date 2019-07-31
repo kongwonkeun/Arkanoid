@@ -16,6 +16,7 @@ from arkanoid.sprites.enemy import Enemy
 from arkanoid.sprites.paddle import (ExplodingState, Paddle, MaterializeState)
 from arkanoid.utils.util import (load_high_score, load_png, load_png_sequence, save_high_score)
 from arkanoid.utils import ptext
+from arkanoid.sensor import SensorThread
 
 GAME_SPEED = 60
 DISPLAY_SIZE = 600, 800
@@ -43,14 +44,15 @@ pygame.init()
 
 class Arkanoid:
 
-    def __init__(self):
+    def __init__(self, sensor):
+        self._sensor = sensor
         self._clock = pygame.time.Clock()
         self._screen = self._create_screen()
         self._background = self._create_background()
         self._display_logo()
         self._display_score_titles()
         self._high_score = load_high_score()
-        self._start_screen = StartScreen(self._start_game)
+        self._start_screen = StartScreen(self._start_game, sensor)
         self._game = None
         self._running = True
 
@@ -89,7 +91,7 @@ class Arkanoid:
         except (ImportError, AttributeError):
             print('unable to import round')
         else:
-            self._game = Game(round_class = round_cls)
+            self._game = Game(self._sensor, round_class = round_cls)
             self._start_screen.hide()
 
     def _create_screen(self):
@@ -142,7 +144,8 @@ class Arkanoid:
 
 class StartScreen:
 
-    def __init__(self, on_start):
+    def __init__(self, on_start, sensor):
+        self._sensor = sensor
         self._on_start = on_start # callback ptr
         self._screen = pygame.display.get_surface()
         self._init = False
@@ -262,15 +265,17 @@ class StartScreen:
             self._user_input = ''
         #---- kong ----
         elif event.key == pygame.K_ESCAPE:
+            self._sensor.stop()
             sys.exit()
         #----
 
 class Game:
 
-    def __init__(self, round_class = Round1, lives = 3):
+    def __init__(self, sensor, round_class = Round1, lives = 3):
         self.lives = lives
         self.score = 0
 
+        self._sensor = sensor
         self._screen = pygame.display.get_surface()
         self._life_img, _ = load_png('paddle_life.png')
         self._life_rects = []
@@ -415,6 +420,7 @@ class Game:
         def quit(event):
             nonlocal keys_down
             if  event.key == pygame.K_ESCAPE:
+                self._sensor.stop()
                 sys.exit()
         self.handler_quit = quit
         #----

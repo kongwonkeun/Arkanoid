@@ -64,7 +64,8 @@ class Round2(BaseRound):
     def _create_first_row_powerups(self):
         first_row_powerups = []
         first_row_powerups.extend([SlowBallPowerUp] * 2)
-        first_row_powerups.extend([CatchPowerUp] * 2)
+        #first_row_powerups.extend([CatchPowerUp] * 2)
+        first_row_powerups.extend([LaserPowerUp] * 2)
         random.shuffle(first_row_powerups)
         return first_row_powerups
 

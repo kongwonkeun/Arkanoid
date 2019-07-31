@@ -24,8 +24,9 @@ class Brick(pygame.sprite.Sprite):
             self.value = brick_colour.value
         if  brick_colour == BrickColour.silver:
             self._destroy_after = 3
-        elif brick_colour == BrickColour.gold: #---- kong ----
-            self._destroy_after = -1
+        elif brick_colour == BrickColour.gold:
+            #self._destroy_after = -1
+            self._destroy_after = 5 #---- kong ----
         else:
             self._destroy_after = 1
 
@@ -48,7 +49,8 @@ class Brick(pygame.sprite.Sprite):
 class BrickColour(enum.Enum):
     blue = 100
     cyan = 70
-    gold = 0 #---- kong ----
+    #gold = 0
+    gold = 200 #---- kong ----
     green = 80
     orange = 60
     pink = 110

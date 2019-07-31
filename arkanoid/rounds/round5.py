@@ -45,7 +45,8 @@ class Round5(BaseRound):
                 if  x in (5, 7):
                     colour = BrickColour.red
                     if  (x, y) == (5, 8):
-                        powerup_cls = CatchPowerUp
+                        #powerup_cls = CatchPowerUp
+                        powerup_cls = LaserPowerUp
                     elif (x, y) == (7, 8):
                         powerup_cls = DuplicatePowerUp
                 bricks.append(self._blit_brick(Brick(colour, 5, powerup_cls=powerup_cls), x, y))

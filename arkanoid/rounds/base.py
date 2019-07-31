@@ -33,7 +33,8 @@ class BaseRound:
 
     @property
     def complete(self):
-        return self._bricks_destroyed >= len([brick for brick in self.bricks if brick.colour != BrickColour.gold]) #---- kong ----
+        #return self._bricks_destroyed >= len([brick for brick in self.bricks if brick.colour != BrickColour.gold])
+        return self._bricks_destroyed >= len(self.bricks) #---- kong ----
 
     def brick_destroyed(self):
         self._bricks_destroyed += 1

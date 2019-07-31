@@ -39,7 +39,8 @@ class Round4(BaseRound):
         ])
         powerups = {
             (1,  1): DuplicatePowerUp,
-            (2,  3): CatchPowerUp,
+            #(2,  3): CatchPowerUp,
+            (2,  3): LaserPowerUp,
             (3, 10): LaserPowerUp,
             (4,  4): ExtraLifePowerUp,
             (7, 11): ExpandPowerUp,
