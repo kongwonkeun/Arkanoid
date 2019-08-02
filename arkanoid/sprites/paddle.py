@@ -8,11 +8,10 @@ import pygame
 
 from arkanoid.event import receiver
 from arkanoid.utils.util import (load_png, load_png_sequence, load_png_x, load_png_sequence_x) #---- kong ----
-from arkanoid.sensor import direction #---- kong ----
+from arkanoid.sensor import G_direction
 
 class Paddle(pygame.sprite.Sprite):
 
-    #def __init__(self, left_offset = 0, right_offset = 0, bottom_offset = 0, speed = 10):
     def __init__(self, left_offset = 0, right_offset = 0, bottom_offset = 0, speed = 10, game = None): #---- kong ----
         super().__init__()
         #---- kong ----
@@ -35,10 +34,11 @@ class Paddle(pygame.sprite.Sprite):
 
     def update(self):
         #---- kong ----
-        if  direction != 2:
-            if   direction == -1: self._move = -self.speed # left
-            elif direction == 1:  self._move =  self.speed # right
-            elif direction == 0:  self._move = 0
+        #global G_direction
+        #if   G_direction == -1: self._move = -self.speed # left
+        #elif G_direction ==  1: self._move =  self.speed # right
+        #elif G_direction ==  0: self._move = 0
+        #else: pass
         #----
         self._state.update()
         if  self._move:

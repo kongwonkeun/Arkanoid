@@ -7,12 +7,13 @@ import os
 import pygame
 import random
 
-from arkanoid.sensor import speed
+from arkanoid.sensor import G_speed
 
 HIGH_SCORE_FILE = os.path.join(os.path.expanduser('~'), '.arkanoid')
 
 #---- kong ----
 def load_png_x(filename):
+    global G_speed
     if  not filename.lower().endswith('.png'):
         filename = '{}.png'.format(filename)
     fullpath = os.path.join(os.path.dirname(__file__), '..', 'data', 'graphics', filename)
@@ -24,7 +25,7 @@ def load_png_x(filename):
     else:
         image = image.convert_alpha()
     r = image.get_rect()
-    i = pygame.transform.scale(image, (r.width + 100 + (speed // 10), r.height))
+    i = pygame.transform.scale(image, (r.width + 100 + (G_speed // 10), r.height))
     return i, i.get_rect()
 #----
 

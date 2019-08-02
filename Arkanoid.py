@@ -8,7 +8,7 @@ from arkanoid.game import Arkanoid
 from arkanoid.sensor import SensorThread
 
 if __name__ == '__main__':
-    com_port = 'COM1'
+    com_port = 'COM17'
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '-p',

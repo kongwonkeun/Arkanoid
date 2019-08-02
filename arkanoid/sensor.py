@@ -11,7 +11,7 @@ class SensorThread(threading.Thread):
 
     def __init__(self, port):
         super(SensorThread, self).__init__()
-        self.serial = serial.Serial(port, 115200, timeout = 0.03) # timeout unit is sec --> 30ms
+        self.serial = serial.Serial(port, 9600, timeout = 0.03) # timeout unit is sec --> 30ms
         self.run_flag = True
         self.s = 0 # state
         self.v = 0 # velocity
@@ -20,11 +20,12 @@ class SensorThread(threading.Thread):
 
     def run(self):
         while (self.run_flag):
-            b = '?'
             b = self.serial.read()
-            if b != '?': self.readStateMachine(b)
+            self.readStateMachine(int.from_bytes(b, byteorder='big'))
 
     def readStateMachine(self, b):
+        global G_speed
+        global G_direction
         if   b == 86: self.s = 1; self.v = 0 # 86 = 'V' of 'VNNNNN'
         elif b == 68: self.s = 7; self.d = 0 # 68 = 'D' of 'DNNN'
         else:
@@ -38,13 +39,13 @@ class SensorThread(threading.Thread):
             elif  self.s == 9: self.s = 10; self.d = (self.d * 10) + (b - 48)
             else: pass
         if  self.s == 6:
-            speed = self.v
+            G_speed = self.v
             return
         if  self.s == 10:
             if  self.d == self.d_last:
-                if    self.d > 17: direction = -1
-                elif  self.d < 15: direction = 1
-                else: direction = 0
+                if    self.d > 17: G_direction = -1
+                elif  self.d < 15: G_direction = 1
+                else: G_direction = 0
                 return
 
     def stop(self):
@@ -52,8 +53,8 @@ class SensorThread(threading.Thread):
         if  self.serial.is_open:
             self.serial.close()
 
-speed = 0
-direction = 2
+G_speed = 0
+G_direction = 0
 
 #
 #
